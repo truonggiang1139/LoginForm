@@ -4,7 +4,7 @@ import logo from "../../../logo-420-x-108.png";
 import LoginForm from "../components/LoginForm";
 import { ILoginParams } from "../../../types";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { API_PATHS } from "../../../configs/api";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -17,14 +17,14 @@ export default function LoginPage() {
     try {
       setErrorMessage("");
       setLoading(true);
-      const res = await axios.post(API_PATHS.signIn, {
+      await axios.post(API_PATHS.signIn, {
         email: value.email,
         password: value.password,
       });
       toast.success("Đăng nhập thành công!!!");
       setTimeout(() => {
         navigate("/home", { replace: true });
-      }, 1000);
+      }, 500);
     } catch (error) {
       setErrorMessage("Invalid username / password");
     }
@@ -52,6 +52,7 @@ export default function LoginPage() {
         onLogin={onLogin}
         loading={loading}
       />
+      <Link to={"/sign-up"}>Đăng ký</Link>
       <Toaster position="top-right" reverseOrder={false} />
     </div>
   );
