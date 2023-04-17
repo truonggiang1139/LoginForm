@@ -6,6 +6,8 @@ import { ILoginParams } from "../../../types";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { API_PATHS } from "../../../configs/api";
+import toast, { Toaster } from "react-hot-toast";
+
 import LoginFormv2 from "../components/LoginFormv2";
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -19,12 +21,16 @@ export default function LoginPage() {
         email: value.email,
         password: value.password,
       });
-      navigate("/home", { replace: true });
+      toast.success("Đăng nhập thành công!!!");
+      setTimeout(() => {
+        navigate("/home", { replace: true });
+      }, 1000);
     } catch (error) {
       setErrorMessage("Invalid username / password");
     }
     setLoading(false);
   };
+
   return (
     <div
       style={{
@@ -46,6 +52,7 @@ export default function LoginPage() {
         onLogin={onLogin}
         loading={loading}
       />
+      <Toaster position="top-right" reverseOrder={false} />
     </div>
   );
 }
