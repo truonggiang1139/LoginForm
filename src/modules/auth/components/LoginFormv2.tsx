@@ -47,9 +47,9 @@ export default function LoginFormv2({ onLogin, loading }: LoginFormProps) {
           render={({ messages }) =>
             messages &&
             Object.entries(messages).map(([type, message]) => (
-              <p className="text-left mt-2 text-red-500" key={type}>
+              <small className="text-left mt-2 text-red-500" key={type}>
                 {t(`${message}`)}
-              </p>
+              </small>
             ))
           }
         />
@@ -79,9 +79,9 @@ export default function LoginFormv2({ onLogin, loading }: LoginFormProps) {
             messages &&
             Object.entries(messages).map(([type, message]) => {
               return (
-                <p className="text-left mt-2 text-red-500" key={type}>
+                <small className="text-left mt-2 text-red-500" key={type}>
                   {t(`${message}`)}
-                </p>
+                </small>
               );
             })
           }

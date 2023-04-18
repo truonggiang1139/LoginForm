@@ -65,9 +65,9 @@ export default function SignUpForm({ loading, onSignUp }: SignUpFormType) {
           render={({ messages }) =>
             messages &&
             Object.entries(messages).map(([type, message]) => (
-              <p className="text-left mt-2 text-red-500" key={type}>
+              <small className="text-left mt-2 text-red-500" key={type}>
                 {t(`${message}`)}
-              </p>
+              </small>
             ))
           }
         />
@@ -96,9 +96,9 @@ export default function SignUpForm({ loading, onSignUp }: SignUpFormType) {
           render={({ messages }) =>
             messages &&
             Object.entries(messages).map(([type, message]) => (
-              <p className="text-left mt-2 text-red-500" key={type}>
+              <small className="text-left mt-2 text-red-500" key={type}>
                 {t(`${message}`)}
-              </p>
+              </small>
             ))
           }
         />
@@ -126,9 +126,9 @@ export default function SignUpForm({ loading, onSignUp }: SignUpFormType) {
           render={({ messages }) =>
             messages &&
             Object.entries(messages).map(([type, message]) => (
-              <p className="text-left mt-2 text-red-500" key={type}>
+              <small className="text-left mt-2 text-red-500" key={type}>
                 {t(`${message}`)}
-              </p>
+              </small>
             ))
           }
         />
@@ -151,9 +151,9 @@ export default function SignUpForm({ loading, onSignUp }: SignUpFormType) {
           render={({ messages }) =>
             messages &&
             Object.entries(messages).map(([type, message]) => (
-              <p className="text-left mt-2 text-red-500" key={type}>
+              <small className="text-left mt-2 text-red-500" key={type}>
                 {t(`${message}`)}
-              </p>
+              </small>
             ))
           }
         />
@@ -181,9 +181,9 @@ export default function SignUpForm({ loading, onSignUp }: SignUpFormType) {
           render={({ messages }) =>
             messages &&
             Object.entries(messages).map(([type, message]) => (
-              <p className="text-left mt-2 text-red-500" key={type}>
+              <small className="text-left mt-2 text-red-500" key={type}>
                 {t(`${message}`)}
-              </p>
+              </small>
             ))
           }
         />
@@ -214,9 +214,9 @@ export default function SignUpForm({ loading, onSignUp }: SignUpFormType) {
           render={({ messages }) =>
             messages &&
             Object.entries(messages).map(([type, message]) => (
-              <p className="text-left mt-2 text-red-500" key={type}>
+              <small className="text-left mt-2 text-red-500" key={type}>
                 {t(`${message}`)}
-              </p>
+              </small>
             ))
           }
         />
@@ -248,9 +248,9 @@ export default function SignUpForm({ loading, onSignUp }: SignUpFormType) {
             render={({ messages }) =>
               messages &&
               Object.entries(messages).map(([type, message]) => (
-                <p className="text-left mt-2 text-red-500" key={type}>
+                <small className="text-left mt-2 text-red-500" key={type}>
                   {t(`${message}`)}
-                </p>
+                </small>
               ))
             }
           />
