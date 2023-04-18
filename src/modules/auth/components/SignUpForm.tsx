@@ -50,12 +50,12 @@ export default function SignUpForm({ loading, onSignUp }: SignUpFormType) {
           {...register("email", {
             required: {
               value: true,
-              message: t("requiredEmail"),
+              message: "requiredEmail",
             },
             pattern: {
               value:
                 /^(([^<>()\\[\]\\.,;:\s@"]+(\.[^<>()\\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-              message: t("invalidEmail"),
+              message: "invalidEmail",
             },
           })}
         />
@@ -66,7 +66,7 @@ export default function SignUpForm({ loading, onSignUp }: SignUpFormType) {
             messages &&
             Object.entries(messages).map(([type, message]) => (
               <p className="text-left mt-2 text-red-500" key={type}>
-                {message}
+                {t(`${message}`)}
               </p>
             ))
           }
@@ -82,11 +82,11 @@ export default function SignUpForm({ loading, onSignUp }: SignUpFormType) {
           {...register("password", {
             required: {
               value: true,
-              message: t("requiredPassword"),
+              message: "requiredPassword",
             },
             minLength: {
               value: 4,
-              message: t("invalidPassword"),
+              message: "invalidPassword",
             },
           })}
         />
@@ -97,7 +97,7 @@ export default function SignUpForm({ loading, onSignUp }: SignUpFormType) {
             messages &&
             Object.entries(messages).map(([type, message]) => (
               <p className="text-left mt-2 text-red-500" key={type}>
-                {message}
+                {t(`${message}`)}
               </p>
             ))
           }
@@ -111,11 +111,11 @@ export default function SignUpForm({ loading, onSignUp }: SignUpFormType) {
           {...register("repeatPassword", {
             required: {
               value: true,
-              message: t("requiredPassword"),
+              message: "requiredPassword",
             },
             validate: (value: string) => {
               if (watch("password") !== value && value) {
-                return `${t("notMatchPassword")}`;
+                return `notMatchPassword`;
               }
             },
           })}
@@ -127,7 +127,7 @@ export default function SignUpForm({ loading, onSignUp }: SignUpFormType) {
             messages &&
             Object.entries(messages).map(([type, message]) => (
               <p className="text-left mt-2 text-red-500" key={type}>
-                {message}
+                {t(`${message}`)}
               </p>
             ))
           }
@@ -142,7 +142,7 @@ export default function SignUpForm({ loading, onSignUp }: SignUpFormType) {
           type="text"
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           {...register("name", {
-            required: `${t("requiredName")}`,
+            required: "requiredName",
           })}
         />
         <ErrorMessage
@@ -152,7 +152,7 @@ export default function SignUpForm({ loading, onSignUp }: SignUpFormType) {
             messages &&
             Object.entries(messages).map(([type, message]) => (
               <p className="text-left mt-2 text-red-500" key={type}>
-                {message}
+                {t(`${message}`)}
               </p>
             ))
           }
@@ -166,7 +166,7 @@ export default function SignUpForm({ loading, onSignUp }: SignUpFormType) {
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           defaultValue={""}
           {...register("gender", {
-            required: `${t("requiredGender")}`,
+            required: "requiredGender",
           })}
         >
           <option value="" hidden>
@@ -182,7 +182,7 @@ export default function SignUpForm({ loading, onSignUp }: SignUpFormType) {
             messages &&
             Object.entries(messages).map(([type, message]) => (
               <p className="text-left mt-2 text-red-500" key={type}>
-                {message}
+                {t(`${message}`)}
               </p>
             ))
           }
@@ -195,7 +195,7 @@ export default function SignUpForm({ loading, onSignUp }: SignUpFormType) {
         <select
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           {...register("region", {
-            required: `${t("requiredRegion")}`,
+            required: "requiredRegion",
           })}
           onChange={(e) => getStateLocation(e.target.value)}
         >
@@ -215,7 +215,7 @@ export default function SignUpForm({ loading, onSignUp }: SignUpFormType) {
             messages &&
             Object.entries(messages).map(([type, message]) => (
               <p className="text-left mt-2 text-red-500" key={type}>
-                {message}
+                {t(`${message}`)}
               </p>
             ))
           }
@@ -230,7 +230,7 @@ export default function SignUpForm({ loading, onSignUp }: SignUpFormType) {
           <select
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             {...register("state", {
-              required: `${t("requiredState")}`,
+              required: "requiredState",
             })}
           >
             <option value="" hidden>
@@ -249,7 +249,7 @@ export default function SignUpForm({ loading, onSignUp }: SignUpFormType) {
               messages &&
               Object.entries(messages).map(([type, message]) => (
                 <p className="text-left mt-2 text-red-500" key={type}>
-                  {message}
+                  {t(`${message}`)}
                 </p>
               ))
             }

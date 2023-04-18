@@ -32,12 +32,12 @@ export default function LoginFormv2({ onLogin, loading }: LoginFormProps) {
           {...register("email", {
             required: {
               value: true,
-              message: t("requiredEmail"),
+              message: "requiredEmail",
             },
             pattern: {
               value:
                 /^(([^<>()\\[\]\\.,;:\s@"]+(\.[^<>()\\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-              message: t("invalidEmail"),
+              message: "invalidEmail",
             },
           })}
         />
@@ -48,7 +48,7 @@ export default function LoginFormv2({ onLogin, loading }: LoginFormProps) {
             messages &&
             Object.entries(messages).map(([type, message]) => (
               <p className="text-left mt-2 text-red-500" key={type}>
-                {message}
+                {t(`${message}`)}
               </p>
             ))
           }
@@ -62,11 +62,11 @@ export default function LoginFormv2({ onLogin, loading }: LoginFormProps) {
           {...register("password", {
             required: {
               value: true,
-              message: t("requiredPassword"),
+              message: "requiredPassword",
             },
             minLength: {
               value: 4,
-              message: t("invalidPassword"),
+              message: "invalidPassword",
             },
           })}
           type="password"
@@ -77,11 +77,13 @@ export default function LoginFormv2({ onLogin, loading }: LoginFormProps) {
           name="password"
           render={({ messages }) =>
             messages &&
-            Object.entries(messages).map(([type, message]) => (
-              <p className="text-left mt-2 text-red-500" key={type}>
-                {message}
-              </p>
-            ))
+            Object.entries(messages).map(([type, message]) => {
+              return (
+                <p className="text-left mt-2 text-red-500" key={type}>
+                  {t(`${message}`)}
+                </p>
+              );
+            })
           }
         />
       </div>

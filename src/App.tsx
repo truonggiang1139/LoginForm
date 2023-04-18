@@ -1,4 +1,4 @@
-import React, { lazy } from "react";
+import React, { lazy, Suspense } from "react";
 import "./App.css";
 
 import { ROUTES } from "./configs/routes";
@@ -41,13 +41,15 @@ function App() {
           </button>
         </div>
       </header>
-      <Routes>
-        <Route path="/" Component={auth ? HomePage : LoginPage} />
-        <Route path={ROUTES.signUp} Component={SignUpPage} />
-        <Route path={ROUTES.home} Component={HomePage} />
-        <Route path={ROUTES.contact} Component={ContactPage} />
-        <Route path={ROUTES.login} Component={LoginPage} />
-      </Routes>
+      <Suspense fallback={<div>Loading.....</div>}>
+        <Routes>
+          <Route path="/" Component={auth ? HomePage : LoginPage} />
+          <Route path={ROUTES.signUp} Component={SignUpPage} />
+          <Route path={ROUTES.home} Component={HomePage} />
+          <Route path={ROUTES.contact} Component={ContactPage} />
+          <Route path={ROUTES.login} Component={LoginPage} />
+        </Routes>
+      </Suspense>
     </div>
   );
 }
