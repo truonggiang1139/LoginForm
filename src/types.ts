@@ -24,9 +24,9 @@ export type StateType = {
 export type ISignUpValidation = {
   email: string;
   password: string;
-  rePassword: string;
+  repeatPassword: string;
   name: string;
-  gender: "" | "Nam" | "Nữ";
+  gender: string;
   region: RegionType[];
   state: StateType[];
 };
