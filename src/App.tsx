@@ -2,14 +2,13 @@ import React, { lazy, Suspense } from "react";
 import "./App.css";
 
 import { ROUTES } from "./configs/routes";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import Cookies from "js-cookie";
 import { ACCESS_TOKEN_KEY } from "./utils/constants";
 import "../src/configs/i18n";
 import { useTranslation } from "react-i18next";
 import ProtectedRoute from "./ProtectedRoute";
-import path from "path";
 
 const HomePage = lazy(() => import("./modules/pages/HomePage"));
 const ContactPage = lazy(() => import("./modules/pages/ContactPage"));
