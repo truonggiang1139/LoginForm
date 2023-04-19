@@ -2,12 +2,14 @@ import React, { lazy, Suspense } from "react";
 import "./App.css";
 
 import { ROUTES } from "./configs/routes";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import Cookies from "js-cookie";
 import { ACCESS_TOKEN_KEY } from "./utils/constants";
 import "../src/configs/i18n";
 import { useTranslation } from "react-i18next";
+import ProtectedRoute from "./ProtectedRoute";
+import path from "path";
 
 const HomePage = lazy(() => import("./modules/pages/HomePage"));
 const ContactPage = lazy(() => import("./modules/pages/ContactPage"));
@@ -21,6 +23,7 @@ function App() {
   const changLanguage = (value: string) => {
     i18n.changeLanguage(value);
   };
+
   return (
     <div className="App">
       <header className="flex justify-end">
@@ -47,7 +50,9 @@ function App() {
           <Route path={ROUTES.signUp} Component={SignUpPage} />
           <Route path={ROUTES.home} Component={HomePage} />
           <Route path={ROUTES.contact} Component={ContactPage} />
-          <Route path={ROUTES.login} Component={LoginPage} />
+          <Route path={ROUTES.login} element={<ProtectedRoute />}>
+            <Route path={ROUTES.login} element={<LoginPage />} />
+          </Route>
         </Routes>
       </Suspense>
     </div>
