@@ -24,4 +24,5 @@ export const API_PATHS = {
   location: `${getBaseUrl(APIService.public)}/location`,
   locationByID: `${getBaseUrl(APIService.public)}/location?pid=`,
   userProfile: `${getBaseUrl(APIService.public)}/user`,
+  getProduct: `${getBaseUrl(APIService.public)}/product`,
 };

@@ -9,16 +9,19 @@ import { ACCESS_TOKEN_KEY } from "./utils/constants";
 import "../src/configs/i18n";
 import { useTranslation } from "react-i18next";
 import ProtectedRoute from "./ProtectedRoute";
+import ProductItem from "./modules/auth/pages/ProductItem";
+import UserDetail from "./modules/pages/DetailPage/UserDetail";
+import PrivateRoute from "./PrivateRoute";
+import Product from "./modules/pages/Product";
 
 const HomePage = lazy(() => import("./modules/pages/HomePage"));
-const ContactPage = lazy(() => import("./modules/pages/ContactPage"));
+
 const SignUpPage = lazy(() => import("./modules/auth/pages/SignUpPage"));
 const LoginPage = lazy(() => import("./modules/auth/pages/LoginPage"));
 
 function App() {
   const auth = Cookies.get(ACCESS_TOKEN_KEY);
   const { i18n } = useTranslation();
-
   const changLanguage = (value: string) => {
     i18n.changeLanguage(value);
   };
@@ -45,10 +48,14 @@ function App() {
       </header>
       <Suspense fallback={<div>Loading.....</div>}>
         <Routes>
-          <Route path="/" Component={auth ? HomePage : LoginPage} />
+          <Route path="/" element={<PrivateRoute />}>
+            <Route path={ROUTES.home} Component={HomePage} />
+            <Route path={ROUTES.product} element={<Product />} />
+            <Route path={`${ROUTES.product}:id`} element={<ProductItem />} />
+            <Route path={`${ROUTES.userDetail}`} element={<UserDetail />} />
+          </Route>
           <Route path={ROUTES.signUp} Component={SignUpPage} />
-          <Route path={ROUTES.home} Component={HomePage} />
-          <Route path={ROUTES.contact} Component={ContactPage} />
+
           <Route path={ROUTES.login} element={<ProtectedRoute />}>
             <Route path={ROUTES.login} element={<LoginPage />} />
           </Route>
